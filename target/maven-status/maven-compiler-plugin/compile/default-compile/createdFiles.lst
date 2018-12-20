@@ -1,0 +1,4 @@
+com\temppi\spring\model\dto\TempRecordDTO.class
+com\temppi\spring\controller\HomeController.class
+com\temppi\spring\model\dao\TempRecordDAO.class
+com\temppi\spring\model\dao\TempRecordDAOImpl.class

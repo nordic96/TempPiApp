@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 Dec, 2018 12:59:45 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.temppi.spring.model.dto.TempRecordDTO" table="TempRecord">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="rec_year" type="int">
+            <column name="rec_year" />
+        </property>
+        <property name="rec_month" type="int">
+            <column name="rec_month" />
+        </property>
+        <property name="rec_date" type="int">
+            <column name="rec_date" />
+        </property>
+        <property name="rec_time" type="time">
+            <column name="rec_time" />
+        </property>
+        <property name="temp" type="float">
+            <column name="temp" />
+        </property>
+    </class>
+</hibernate-mapping>
