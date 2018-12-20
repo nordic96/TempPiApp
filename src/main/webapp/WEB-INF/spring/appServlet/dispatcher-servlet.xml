@@ -17,6 +17,7 @@
      http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
      
     <context:component-scan base-package="com.temppi.spring" />
+    <context:property-placeholder location="classpath:application.properties"/>
     <mvc:annotation-driven />
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -30,9 +31,15 @@
     <tx:annotation-driven />
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-	    <property name="url" value="jdbc:mysql://localhost:3306/test"/>
-	    <property name="username" value="root"/>
-	    <property name="password" value="nordic96"/>
+	    <property name="url">
+	    	<value>${jdbc.url}</value>
+	    </property>
+	    <property name="username">
+	    	<value>${jdbc.username}</value>
+	    </property>
+	    <property name="password">
+	    	<value>${jdbc.password}</value>
+	    </property>
 	</bean>
 	<bean id="transactionManager"
 	    class="org.springframework.orm.hibernate4.HibernateTransactionManager">
