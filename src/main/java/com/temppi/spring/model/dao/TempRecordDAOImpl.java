@@ -2,6 +2,7 @@ package com.temppi.spring.model.dao;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
@@ -23,6 +24,7 @@ public class TempRecordDAOImpl implements TempRecordDAO{
 	@Transactional
 	@Override
 	public List<TempRecordDTO> tempRecordList() {
+		logger.info("---tempRecordList()---");
 		CriteriaQuery<TempRecordDTO> cq = sessionFactory.getCurrentSession()
 				.getCriteriaBuilder()
 				.createQuery(TempRecordDTO.class);
@@ -85,5 +87,29 @@ public class TempRecordDAOImpl implements TempRecordDAO{
 			logger.info("selected year:" + year);
 		}
 		return yearList;
+	}
+
+	@Transactional
+	@Override
+	public List<TempRecordDTO> getSearchResultList(String year, String month, String date) {
+		logger.info("---getSearchResultList(" + year + ", " + month + ", " + date + ")---");
+		CriteriaBuilder cb = sessionFactory
+				.getCurrentSession()
+				.getCriteriaBuilder();
+		
+		CriteriaQuery<TempRecordDTO> criteria = cb
+				.createQuery(TempRecordDTO.class);
+		
+		Root<TempRecordDTO> root = criteria.from(TempRecordDTO.class);
+		criteria.select(root)
+		.where(
+				cb.equal(root.get("rec_year"), year),
+				cb.equal(root.get("rec_month"), month),
+				cb.equal(root.get("rec_date"), date)
+				);
+		
+		Query<TempRecordDTO> q = sessionFactory.getCurrentSession().createQuery(criteria);
+		List<TempRecordDTO> searchResultList = q.getResultList();
+		return searchResultList;
 	}
 }

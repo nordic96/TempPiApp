@@ -9,8 +9,6 @@
 <title>Testing Page</title>
 </head>
 <body>
-HELLO WORLD
-	Greeting: ${greeting}
 	<div align="center" style="width:70%">
 	   <h1>Temperature Record List</h1>
 	   <form name="search" action="search" method="POST">
@@ -51,7 +49,7 @@ HELLO WORLD
 		   	<th>Time</th>
 		   	<th>Temperature</th>
 	   	</tr>
-        <c:forEach var="tempRecord" items="${tempRecordList}" varStatus="status">
+        <c:forEach var="tempRecord" items="${searchResultList}" varStatus="status">
         <tr>
         	<td>${tempRecord.id}</td>
             <td>${tempRecord.rec_year}</td>

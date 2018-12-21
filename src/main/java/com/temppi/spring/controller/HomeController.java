@@ -8,13 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.temppi.spring.model.dao.TempRecordDAO;
 import com.temppi.spring.model.dto.TempRecordDTO;
 
 @Controller
-@RequestMapping(value="/home")
 public class HomeController {
 	
 	@Autowired
@@ -22,7 +22,7 @@ public class HomeController {
 	
 	private static final Logger logger = Logger.getLogger(HomeController.class);
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/home", method = RequestMethod.GET)
 	public ModelAndView home() {
 		List<TempRecordDTO> tempRecordList = tempRecordDAO.tempRecordList();
 		if(tempRecordList.isEmpty()) {
@@ -31,6 +31,17 @@ public class HomeController {
 		ModelAndView model = new ModelAndView("home");
 		model.addObject("greeting", "Hello from Spring 4 MVC");
 		model.addObject("tempRecordList", tempRecordList);
+		return model;
+	}
+	
+	@RequestMapping(value="/search", method = RequestMethod.POST)
+	public ModelAndView searchByDate(@RequestParam("search_year") String year, 
+			@RequestParam("search_month") String month, 
+			@RequestParam("search_date") String date) {
+		ModelAndView model = new ModelAndView("search");
+		List<TempRecordDTO> searchResultList = 
+				tempRecordDAO.getSearchResultList(year, month, date);
+		model.addObject("searchResultList", searchResultList);
 		return model;
 	}
 	
