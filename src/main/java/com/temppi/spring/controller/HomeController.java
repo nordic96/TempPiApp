@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,7 @@ import com.temppi.spring.model.dao.TempRecordDAO;
 import com.temppi.spring.model.dto.TempRecordDTO;
 
 @Controller
+@RequestMapping(value="/home")
 public class HomeController {
 	
 	@Autowired
@@ -20,7 +22,7 @@ public class HomeController {
 	
 	private static final Logger logger = Logger.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView home() {
 		List<TempRecordDTO> tempRecordList = tempRecordDAO.tempRecordList();
 		if(tempRecordList.isEmpty()) {
@@ -30,5 +32,11 @@ public class HomeController {
 		model.addObject("greeting", "Hello from Spring 4 MVC");
 		model.addObject("tempRecordList", tempRecordList);
 		return model;
+	}
+	
+	@ModelAttribute("dateList")
+	public List<Integer> getDateList() {
+		List<Integer> dateList = tempRecordDAO.getDateList();
+		return dateList;
 	}
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +13,15 @@ HELLO WORLD
 	Greeting: ${greeting}
 	<div align="center" style="width:70%">
 	   <h1>Temperature Record List</h1>
-	   <table style="width:100%">
-	   	<tr>
+	   <table align="left">
+	   	<tr>   
 	   		<td>Select Date:</td>
-	   		<td></td>
+	   		<td align="left">
+	   			<form:select path="dateList">
+	   				<form:option value="NONE" label="Select"/>
+	   				<form:options items="${dateList}"/>
+	   			</form:select>
+	   		</td>
 	   	</tr>
 	   </table>
 	   <table border="1" style="width:100%">
