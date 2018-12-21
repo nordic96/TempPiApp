@@ -14,9 +14,24 @@ HELLO WORLD
 	<div align="center" style="width:70%">
 	   <h1>Temperature Record List</h1>
 	   <table align="left">
-	   	<tr>   
-	   		<td>Select Date:</td>
-	   		<td align="left">
+	   	<tr><td>Search by date</td></tr>
+	   	<tr>
+	   		<td>Year:</td>
+	   		<td>
+	   			<form:select path="yearList">
+	   				<form:option value="NONE" label="Select"/>
+	   				<form:options items="${yearList}"/>
+	   			</form:select>
+	   		</td>
+	   		<td>Month:</td>
+	   		<td>
+	   			<form:select path="monthList">
+	   				<form:option value="NONE" label="Select"/>
+	   				<form:options items="${monthList}"/>
+	   			</form:select>
+	   		</td>
+	   		<td>Day:</td>
+	   		<td>
 	   			<form:select path="dateList">
 	   				<form:option value="NONE" label="Select"/>
 	   				<form:options items="${dateList}"/>

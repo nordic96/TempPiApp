@@ -34,6 +34,18 @@ public class HomeController {
 		return model;
 	}
 	
+	@ModelAttribute("yearList")
+	public List<Integer> getYearList() {
+		List<Integer> yearList = tempRecordDAO.getYearList();
+		return yearList;
+	}
+	
+	@ModelAttribute("monthList")
+	public List<Integer> getMonthList() {
+		List<Integer> monthList = tempRecordDAO.getMonthList();
+		return monthList;
+	}	
+	
 	@ModelAttribute("dateList")
 	public List<Integer> getDateList() {
 		List<Integer> dateList = tempRecordDAO.getDateList();

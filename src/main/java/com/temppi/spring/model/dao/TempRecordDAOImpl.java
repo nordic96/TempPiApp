@@ -46,8 +46,44 @@ public class TempRecordDAOImpl implements TempRecordDAO{
 		Query<Integer> q = sessionFactory.getCurrentSession().createQuery(criteria);
 		List<Integer> dateList = q.getResultList();
 		for(int date: dateList) {
-			logger.debug("selected date:" + date);
+			logger.info("selected date:" + date);
 		}
-		return q.getResultList();
+		return dateList;
+	}
+
+	@Transactional
+	@Override
+	public List<Integer> getMonthList() {
+		logger.info("---getMonthList()---");
+		CriteriaQuery<Integer> criteria = sessionFactory.getCurrentSession()
+				.getCriteriaBuilder()
+				.createQuery(Integer.class);
+		Root<TempRecordDTO> root = criteria.from(TempRecordDTO.class);
+		criteria.select(root.get("rec_month"))
+		.distinct(true);
+		Query<Integer> q = sessionFactory.getCurrentSession().createQuery(criteria);
+		List<Integer> monthList = q.getResultList();
+		for(int month: monthList) {
+			logger.info("selected month:" + month);
+		}
+		return monthList;
+	}
+
+	@Transactional
+	@Override
+	public List<Integer> getYearList() {
+		logger.info("---getYearList()---");
+		CriteriaQuery<Integer> criteria = sessionFactory.getCurrentSession()
+				.getCriteriaBuilder()
+				.createQuery(Integer.class);
+		Root<TempRecordDTO> root = criteria.from(TempRecordDTO.class);
+		criteria.select(root.get("rec_year"))
+		.distinct(true);
+		Query<Integer> q = sessionFactory.getCurrentSession().createQuery(criteria);
+		List<Integer> yearList = q.getResultList();
+		for(int year: yearList) {
+			logger.info("selected year:" + year);
+		}
+		return yearList;
 	}
 }

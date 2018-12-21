@@ -7,4 +7,6 @@ import com.temppi.spring.model.dto.TempRecordDTO;
 public interface TempRecordDAO {
 	public List<TempRecordDTO> tempRecordList();
 	public List<Integer> getDateList();
+	public List<Integer> getMonthList();
+	public List<Integer> getYearList();
 }
