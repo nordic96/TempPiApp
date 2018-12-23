@@ -5,14 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"> var searchResult = '${searchResultJson}';</script>
+<script type="text/javascript" src="js/linechart.js"></script>
 <meta charset="ISO-8859-1">
-<title>Testing Page</title>
+<title>TempPi Search</title>
 </head>
 <body>
 	<div align="center" style="width:70%">
 	   <h1>Temperature Record List</h1>
+	   <div align="left">
 	   <form name="search" action="search" method="POST">
-	   <table align="left">
+	   <table>
 	   	<tr><td colspan="7">Search by date</td></tr>
 	   	<tr>
 	   		<td>Year:</td>
@@ -38,28 +42,32 @@
 	   		</td>
 	   		<td><input type="submit" value="Search" class="btn"></td>
 	   	</tr>
-	   </table>
-	   </form>
-	   <table border="1" style="width:100%">
-	   	<tr>
-		   	<th>ID</th>
-		   	<th>Year</th>
-		   	<th>Month</th>
-		   	<th>Day</th>
-		   	<th>Time</th>
-		   	<th>Temperature</th>
-	   	</tr>
-        <c:forEach var="tempRecord" items="${searchResultList}" varStatus="status">
-        <tr>
-        	<td>${tempRecord.id}</td>
-            <td>${tempRecord.rec_year}</td>
-            <td>${tempRecord.rec_month}</td>
-            <td>${tempRecord.rec_date}</td>
-            <td>${tempRecord.rec_time}</td>
-            <td>${tempRecord.temp}</td>   
-        </tr>
-        </c:forEach>             
-	   </table>
+	   </table>	 
+	   </form>  
+	   </div>
+	   <div id="tempLineChart"></div>
+	   <div>
+		   <table border="1" style="width:100%">
+		   	<tr>
+			   	<th>ID</th>
+			   	<th>Year</th>
+			   	<th>Month</th>
+			   	<th>Day</th>
+			   	<th>Time</th>
+			   	<th>Temperature</th>
+		   	</tr>
+	        <c:forEach var="tempRecord" items="${searchResultList}" varStatus="status">
+	        <tr>
+	        	<td>${tempRecord.id}</td>
+	            <td>${tempRecord.rec_year}</td>
+	            <td>${tempRecord.rec_month}</td>
+	            <td>${tempRecord.rec_date}</td>
+	            <td>${tempRecord.rec_time}</td>
+	            <td>${tempRecord.temp}</td>   
+	        </tr>
+	        </c:forEach>             
+		   </table>	   
+	   </div>
 	</div>
 </body>
 </html>

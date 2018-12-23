@@ -42,7 +42,11 @@ public class HomeController {
 		List<TempRecordDTO> searchResultList = 
 				tempRecordDAO.getSearchResultList(year, month, date);
 		model.addObject("searchResultList", searchResultList);
-		return model;
+		
+		String resultJson = JSONMapper.mapJSONString(searchResultList);
+		logger.info("JSON String value: " + resultJson);
+		model.addObject("searchResultJson", resultJson);
+		return model;	
 	}
 	
 	@ModelAttribute("yearList")

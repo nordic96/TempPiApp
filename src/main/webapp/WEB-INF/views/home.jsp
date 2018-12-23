@@ -6,42 +6,44 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Testing Page</title>
+<title>TempPi Home</title>
 </head>
 <body>
 HELLO WORLD
 	Greeting: ${greeting}
 	<div align="center" style="width:70%">
 	   <h1>Temperature Record List</h1>
-	   <form name="search" action="search" method="POST">
-	   <table align="left">
-	   	<tr><td colspan="7">Search by date</td></tr>
-	   	<tr>
-	   		<td>Year:</td>
-	   		<td>
-	   			<form:select path="yearList" name="search_year">
-	   				<form:option value="NONE" label="Select"/>
-	   				<form:options items="${yearList}"/>
-	   			</form:select>
-	   		</td>
-	   		<td>Month:</td>
-	   		<td>
-	   			<form:select path="monthList" name="search_month">
-	   				<form:option value="NONE" label="Select"/>
-	   				<form:options items="${monthList}"/>
-	   			</form:select>
-	   		</td>
-	   		<td>Day:</td>
-	   		<td>
-	   			<form:select path="dateList" name="search_date">
-	   				<form:option value="NONE" label="Select"/>
-	   				<form:options items="${dateList}"/>
-	   			</form:select>
-	   		</td>
-	   		<td><input type="submit" value="Search" class="btn"></td>
-	   	</tr>
-	   </table>
-	   </form>
+	   <div align="left">
+		   <form name="search" action="search" method="POST">
+			   <table>
+			   	<tr><td colspan="7">Search by date</td></tr>
+			   	<tr>
+			   		<td>Year:</td>
+			   		<td>
+			   			<form:select path="yearList" name="search_year">
+			   				<form:option value="NONE" label="Select"/>
+			   				<form:options items="${yearList}"/>
+			   			</form:select>
+			   		</td>
+			   		<td>Month:</td>
+			   		<td>
+			   			<form:select path="monthList" name="search_month">
+			   				<form:option value="NONE" label="Select"/>
+			   				<form:options items="${monthList}"/>
+			   			</form:select>
+			   		</td>
+			   		<td>Day:</td>
+			   		<td>
+			   			<form:select path="dateList" name="search_date">
+			   				<form:option value="NONE" label="Select"/>
+			   				<form:options items="${dateList}"/>
+			   			</form:select>
+			   		</td>
+			   		<td><input type="submit" value="Search" class="btn"></td>
+			   	</tr>
+			   </table>
+		   </form>
+	   </div>
 	   <table border="1" style="width:100%">
 	   	<tr>
 		   	<th>ID</th>
