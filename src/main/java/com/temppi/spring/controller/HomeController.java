@@ -15,6 +15,7 @@ import com.temppi.spring.model.dao.TempRecordDAO;
 import com.temppi.spring.model.dto.TempRecordDTO;
 
 @Controller
+@RequestMapping(value="/")
 public class HomeController {
 	
 	@Autowired
@@ -22,14 +23,13 @@ public class HomeController {
 	
 	private static final Logger logger = Logger.getLogger(HomeController.class);
 	
-	@RequestMapping(value="/home", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView home() {
 		List<TempRecordDTO> tempRecordList = tempRecordDAO.tempRecordList();
 		if(tempRecordList.isEmpty()) {
 			logger.debug("tempRecordList is empty");
 		}
 		ModelAndView model = new ModelAndView("home");
-		model.addObject("greeting", "Hello from Spring 4 MVC");
 		model.addObject("tempRecordList", tempRecordList);
 		return model;
 	}

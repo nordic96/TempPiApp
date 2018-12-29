@@ -20,6 +20,7 @@
     <context:property-placeholder location="classpath:application.properties"/>
     <mvc:annotation-driven />
     <mvc:resources mapping="/js/**" location="/WEB-INF/classes/js/"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/classes/css/"/>
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
