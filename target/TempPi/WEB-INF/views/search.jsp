@@ -49,8 +49,8 @@
                 </ul>
             </li>
             <li class="active">
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Search</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Search</a>
+                <ul class="list-unstyled collapse show" id="pageSubmenu">
                     <li>
                         <a href="${contextPath}/search">Temperature Search</a>
                     </li>

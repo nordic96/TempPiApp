@@ -50,16 +50,16 @@
                 </ul>
             </li>
             <li class="active">
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Search</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Search</a>
+                <ul class="list-unstyled collapse show" id="pageSubmenu">
                     <li>
                         <a href="${contextPath}/search">Temperature Search</a>
                     </li>
                 </ul>
             </li>
         </ul>
+    </nav> 
 
-    </nav>
     <!-- Page Content -->
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -103,7 +103,7 @@
 	   </form>
 	   <br>
 	   <p>Temperature record graph for:</p>
-	   <div id="tempLineChart" style="width:80%"></div>
+	   <div id="tempLineChart" style="width:80%" align="left"></div>
 	   <br>
 	   <table class="table table-sm" style="width:80%">
 	   	<thead class="thead-light">
@@ -150,6 +150,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     
     <!-- sidebar JQuery -->
-    <script type="text/javascript" src="js/sidebar.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 </body>
 </html>

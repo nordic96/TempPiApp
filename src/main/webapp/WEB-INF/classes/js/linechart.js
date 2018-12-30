@@ -1,11 +1,8 @@
-google.charts.load('current', {
-	callback: function() {
-		drawBackgroundColor();
-		$(window).resize(drawBackgroundColor);
-	},
-	packages: ['corechart', 'line']
-});
+google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBackgroundColor);
+window.onresize = function(){
+    startDrawingChart();
+};
 
 function formatTimeOfDay(time) {
 	var arr = time.split(":").map(Number);
@@ -17,7 +14,7 @@ function drawBackgroundColor() {
       //var searchResult = "${searchResultJson}";
       searchResult = JSON.parse(searchResult);
       data.addColumn('timeofday', 'Time');
-      data.addColumn('number', 'Temperature');
+      data.addColumn('number', 'Temp');
 
       for (var i = 0; i < searchResult.length; i++) {
     	  data.addRow([formatTimeOfDay(searchResult[i].rec_time), 
@@ -30,9 +27,6 @@ function drawBackgroundColor() {
 	    },
 	    vAxis: {
 	      title: 'Temperature'
-	    },
-	    chartArea: {
-	    	width: '90%'
 	    },
 	    width: '100%',
 	    height: '250'
