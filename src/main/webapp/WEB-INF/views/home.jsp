@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/ico" href="/TempPi/favicon.ico"/>
+	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,20 +41,19 @@
         </div>
 
         <ul class="list-unstyled components">
-            <p>Application Menu</p>
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="home.jsp">Home</a>
+                        <a href="${contextPath}/">Home</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Main Menu</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Search</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#">Temperature Search</a>
+                        <a href="${contextPath}/search">Temperature Search</a>
                     </li>
                 </ul>
             </li>
@@ -72,38 +73,8 @@
             </div>
         </nav>
         <h2>TempPi Home</h2>
-	   <form name="search" action="search" method="POST">
-		   <table>
-		   	<tr><td colspan="7">Search by date</td></tr>
-		   	<tr>
-		   		<td>Year:</td>
-		   		<td>
-		   			<form:select class="form-control form-control-sm" path="yearList" name="search_year">
-		   				<form:option value="NONE" label="Select"/>
-		   				<form:options items="${yearList}"/>
-		   			</form:select>
-		   		</td>
-		   		<td>Month:</td>
-		   		<td>
-		   			<form:select class="form-control form-control-sm" path="monthList" name="search_month">
-		   				<form:option value="NONE" label="Select"/>
-		   				<form:options items="${monthList}"/>
-		   			</form:select>
-		   		</td>
-		   		<td>Day:</td>
-		   		<td>
-		   			<form:select class="form-control form-control-sm" path="dateList" name="search_date">
-		   				<form:option value="NONE" label="Select"/>
-		   				<form:options items="${dateList}"/>
-		   			</form:select>
-		   		</td>
-		   		<td><input type="submit" value="Search" class="btn btn-primary btn-sm"></td>
-		   	</tr>
-		   </table>
-	   </form>
-	   <br>
-	   <table class="table table-sm" style="width:80%">
-	   		<thead class="thead-light">
+	    <table class="table table-sm" style="width:80%">
+	    	<thead class="thead-light">
 		   	<tr>
 			   	<th>ID</th>
 			   	<th>Year</th>
@@ -141,11 +112,6 @@
     
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    
-    <!-- mCustomScrollbar.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js" 
-    integrity="sha256-/YAntTqXy9V4LoXFkI5WPDl3ZwP/knn1BljmMJJ7QWc=" 
-    crossorigin="anonymous"></script>
     
     <!-- sidebar JQuery -->
     <script type="text/javascript" src="js/sidebar.js"></script>

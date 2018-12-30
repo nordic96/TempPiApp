@@ -34,17 +34,25 @@ public class HomeController {
 		return model;
 	}
 	
-	@RequestMapping(value="/search", method = RequestMethod.POST)
-	public ModelAndView searchByDate(@RequestParam("search_year") String year, 
+	@RequestMapping(value="/search", method = RequestMethod.GET)
+	public ModelAndView search() {
+		ModelAndView model = new ModelAndView("search");
+		return model;
+	}
+	
+	@RequestMapping(value="/searchResult", method = RequestMethod.POST)
+	public ModelAndView search(@RequestParam("search_year") String year, 
 			@RequestParam("search_month") String month, 
 			@RequestParam("search_date") String date) {
-		ModelAndView model = new ModelAndView("search");
+		
+		ModelAndView model = new ModelAndView("searchResult");
+		
 		List<TempRecordDTO> searchResultList = 
 				tempRecordDAO.getSearchResultList(year, month, date);
 		model.addObject("searchResultList", searchResultList);
 		
 		String resultJson = JSONMapper.mapJSONString(searchResultList);
-		logger.info("JSON String value: " + resultJson);
+		//logger.info("JSON String value: " + resultJson);
 		model.addObject("searchResultJson", resultJson);
 		return model;	
 	}

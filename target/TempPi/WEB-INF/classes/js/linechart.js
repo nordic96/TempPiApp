@@ -1,4 +1,10 @@
-google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.load('current', {
+	callback: function() {
+		drawBackgroundColor();
+		$(window).resize(drawBackgroundColor);
+	},
+	packages: ['corechart', 'line']
+});
 google.charts.setOnLoadCallback(drawBackgroundColor);
 
 function formatTimeOfDay(time) {
@@ -18,13 +24,18 @@ function drawBackgroundColor() {
     		  searchResult[i].temp]);
       }
 
-      var options = {
-        hAxis: {
-          title: 'Time'
-        },
-        vAxis: {
-          title: 'Temperature'
-        }
+      var options = {	  
+	    hAxis: {
+	      title: 'Time'
+	    },
+	    vAxis: {
+	      title: 'Temperature'
+	    },
+	    chartArea: {
+	    	width: '90%'
+	    },
+	    width: '100%',
+	    height: '250'
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('tempLineChart'));
