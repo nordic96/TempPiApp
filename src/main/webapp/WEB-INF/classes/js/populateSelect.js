@@ -1,0 +1,83 @@
+$(document).ready(function() {
+	document.getElementById("search_year").onchange = function() {
+		populateMonth();
+	}
+	
+	document.getElementById("search_month").onchange = function() {
+		populateDate();
+	}
+});
+
+function populateMonth() {
+	var e = document.getElementById("search_year");
+	var yearSelected = e.options[e.selectedIndex].value;
+	
+	if (!validate(yearSelected)) {
+		console.log("year not selected properly..");
+		//do nothing
+	} else {
+		console.log("selected year: " + yearSelected);
+	    $.ajax({
+	        url: "/TempPi/search/" + yearSelected,
+	        type: "GET",
+	        success: function(data) 
+	        {
+	        	var search_month = $('#search_month'), option = "";
+	        	for(var i=0; i < data.length; i++) {
+	        		console.log(data[i]);
+	        		option = option + "<option value='" + data[i] + "'>" + data[i] + "</option>";
+	        	}
+	        	search_month.append(option);
+	        	
+	            console.log("sucess!");
+	        },
+	        error: function(e){
+	            console.log("ERROR: ", e);
+	        }
+	    });		
+	}
+}
+
+function populateDate() {
+	var e = document.getElementById("search_year");
+	var yearSelected = e.options[e.selectedIndex].value;
+	
+	var e2 = document.getElementById("search_month");
+	var monthSelected = e2.options[e2.selectedIndex].value;
+	
+	if (!validate(yearSelected) || !validate(monthSelected)) {
+		console.log("either year or month not selected properly..");
+		//do nothing
+	} else {
+		console.log("selected year: " + yearSelected);
+		console.log("selected month: " + monthSelected);
+		
+	    $.ajax({
+	        url: "/TempPi/search/" + yearSelected + "/" + monthSelected,
+	        type: "GET",
+	        success: function(data) 
+	        {
+	        	var search_month = $('#search_date'), option = "";
+	        	for(var i=0; i < data.length; i++) {
+	        		console.log(data[i]);
+	        		option = option + "<option value='" + data[i] + "'>" + data[i] + "</option>";
+	        	}
+	        	search_month.append(option);
+	        	
+	            console.log("sucess!");
+	        },
+	        error: function(e){
+	            console.log("ERROR: ", e);
+	        }
+	    });		
+	}
+
+}
+
+function validate(selectedValue) {
+	if(selectedValue == 'NONE') {
+		return false;
+	} else {
+		return true;
+	}
+}

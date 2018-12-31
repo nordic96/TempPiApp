@@ -71,43 +71,54 @@
                 </button>
             </div>
         </nav>
-        <h2>Temperature Search</h2>
-	   <form name="search" action="searchResult" method="POST">
+        <h3>Temperature Search</h3>
+	   <form:form name="search" action="searchResult" modelAttribute="searchForm" method="POST">
 		   <table>
 		   	<tr><td colspan="7">Search by date</td></tr>
 		   	<tr>
 		   		<td>Year:</td>
 		   		<td>
-		   			<form:select class="form-control form-control-sm" path="yearList" name="search_year">
-		   				<form:option value="NONE" label="Select"/>
+		   			<form:select class="form-control form-control-sm" path="search_year"
+		   			id="search_year">
+		   				<form:option value="NONE" label="Select" selected="true"/>
 		   				<form:options items="${yearList}"/>
 		   			</form:select>
 		   		</td>
 		   		<td>Month:</td>
 		   		<td>
-		   			<form:select class="form-control form-control-sm" path="monthList" name="search_month">
+		   			<form:select class="form-control form-control-sm" path="search_month"
+		   			id="search_month">
 		   				<form:option value="NONE" label="Select"/>
-		   				<form:options items="${monthList}"/>
 		   			</form:select>
 		   		</td>
 		   		<td> Day:</td>
 		   		<td>
-		   			<form:select class="form-control form-control-sm" path="dateList" name="search_date">
+		   			<form:select class="form-control form-control-sm" path="search_date"
+		   			id="search_date">
 		   				<form:option value="NONE" label="Select"/>
-		   				<form:options items="${dateList}"/>
 		   			</form:select>
 		   		</td>
 		   		<td><input type="submit" value="Search" class="btn btn-primary btn-sm"></td>
 		   	</tr>
+		   	<tr>
+		   		<td colspan="7"><form:errors path="search_year" class="error"/></td>
+		   	</tr>
+		   	<tr>		   		
+		   		<td colspan="7"><form:errors path="search_month" class="error"/></td>
+		   	</tr>
+		   	<tr>
+		   		<td colspan="7"><form:errors path="search_date" class="error"/></td>
+		   	</tr>
 		   </table>
-	   </form>
+	   </form:form>
 	   <br>
     </div>
 </div>
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-    crossorigin="anonymous"></script>
+    <!-- jQuery CDN - (with AJAX) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"
+  	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  	crossorigin="anonymous"></script>
+  	
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
     integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
@@ -119,6 +130,9 @@
     
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    
+    <!-- Populating Date Select options -->
+    <script type="text/javascript" src="js/populateSelect.js"></script>
     
     <!-- sidebar JQuery -->
     <script type="text/javascript" src="js/sidebar.js"></script>

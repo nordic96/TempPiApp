@@ -37,14 +37,24 @@ public class TempRecordDAOImpl implements TempRecordDAO{
 
 	@Transactional
 	@Override
-	public List<Integer> getDateList() {
-		logger.info("---getDateList()---");
-		CriteriaQuery<Integer> criteria = sessionFactory.getCurrentSession()
-				.getCriteriaBuilder()
+	public List<Integer> getDateList(String yearSelected, String monthSelected) {
+		logger.info("---getDateList("+yearSelected + "," + monthSelected + ")---");
+		CriteriaBuilder cb = sessionFactory
+				.getCurrentSession()
+				.getCriteriaBuilder();
+		
+		CriteriaQuery<Integer> criteria = cb
 				.createQuery(Integer.class);
+		
 		Root<TempRecordDTO> root = criteria.from(TempRecordDTO.class);
+		
 		criteria.select(root.get("rec_date"))
+		.where(
+				cb.equal(root.get("rec_year"), yearSelected),
+				cb.equal(root.get("rec_month"), monthSelected)
+				)
 		.distinct(true);
+		
 		Query<Integer> q = sessionFactory.getCurrentSession().createQuery(criteria);
 		List<Integer> dateList = q.getResultList();
 		for(int date: dateList) {
@@ -55,15 +65,21 @@ public class TempRecordDAOImpl implements TempRecordDAO{
 
 	@Transactional
 	@Override
-	public List<Integer> getMonthList() {
-		logger.info("---getMonthList()---");
-		CriteriaQuery<Integer> criteria = sessionFactory.getCurrentSession()
-				.getCriteriaBuilder()
+	public List<Integer> getMonthList(String yearSelected) {
+		logger.info("---getMonthList(" + yearSelected + ")---");
+		CriteriaBuilder cb = sessionFactory.getCurrentSession()
+				.getCriteriaBuilder();
+		CriteriaQuery<Integer> cq = cb
 				.createQuery(Integer.class);
-		Root<TempRecordDTO> root = criteria.from(TempRecordDTO.class);
-		criteria.select(root.get("rec_month"))
+		
+		Root<TempRecordDTO> root = cq.from(TempRecordDTO.class);
+		
+		cq.select(root.get("rec_month"))
+		.where(
+				cb.equal(root.get("rec_year"), yearSelected)
+				)
 		.distinct(true);
-		Query<Integer> q = sessionFactory.getCurrentSession().createQuery(criteria);
+		Query<Integer> q = sessionFactory.getCurrentSession().createQuery(cq);
 		List<Integer> monthList = q.getResultList();
 		for(int month: monthList) {
 			logger.info("selected month:" + month);

@@ -1,7 +1,7 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBackgroundColor);
 window.onresize = function(){
-    startDrawingChart();
+    drawBackgroundColor();
 };
 
 function formatTimeOfDay(time) {
