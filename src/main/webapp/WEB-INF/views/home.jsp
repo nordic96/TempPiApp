@@ -38,7 +38,9 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>TempPi</h3>
+            <table>
+            <tr><td><h3>TempPi</h3></td></tr>
+            </table>
         </div>
 
         <ul class="list-unstyled components">
@@ -73,29 +75,8 @@
                 </button>
             </div>
         </nav>
-        <h2>TempPi Home</h2>
-	    <table class="table table-sm" style="width:80%">
-	    	<thead class="thead-light">
-		   	<tr>
-			   	<th>ID</th>
-			   	<th>Year</th>
-			   	<th>Month</th>
-			   	<th>Day</th>
-			   	<th>Time</th>
-			   	<th>Temperature</th>
-		   	</tr>
-		   	</thead>
-	        <c:forEach var="tempRecord" items="${tempRecordList}" varStatus="status">
-	        <tr>
-	        	<td>${tempRecord.id}</td>
-	            <td>${tempRecord.rec_year}</td>
-	            <td>${tempRecord.rec_month}</td>
-	            <td>${tempRecord.rec_date}</td>
-	            <td>${tempRecord.rec_time}</td>
-	            <td>${tempRecord.temp}</td>   
-	        </tr>
-	        </c:forEach>             
-	   </table>	
+        <h3>TempPi Home</h3>
+        
     </div>
 </div>
     <!-- jQuery CDN - (with AJAX) -->
@@ -113,13 +94,19 @@
     crossorigin="anonymous"></script>
     
     <!-- jQuery Custom Scroller CDN -->
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     
     <!-- sidebar JQuery -->
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
     </script>

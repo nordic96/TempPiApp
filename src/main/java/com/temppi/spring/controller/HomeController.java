@@ -27,7 +27,7 @@ public class HomeController {
 			logger.debug("tempRecordList is empty");
 		}
 		ModelAndView model = new ModelAndView("home");
-		model.addObject("tempRecordList", tempRecordList);
+		//model.addObject("tempRecordList", tempRecordList);
 		return model;
 	}
 }

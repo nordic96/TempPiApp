@@ -8,12 +8,10 @@ $(document).ready(function() {
     });
     
 	document.getElementById("search_year").onchange = function() {
-		$('#search_month').empty();
 		populateMonth();
 	}
 	
 	document.getElementById("search_month").onchange = function() {
-		$('#search_date').empty();
 		populateDate();
 	}
 });
@@ -26,6 +24,7 @@ function populateMonth() {
 		console.log("year not selected properly..");
 		//do nothing
 	} else {
+		$('#search_month').empty();
 		console.log("selected year: " + yearSelected);
 	    $.ajax({
 	        url: "/TempPi/search/" + yearSelected,
@@ -62,6 +61,7 @@ function populateDate() {
 		console.log("either year or month not selected properly..");
 		//do nothing
 	} else {
+		$('#search_date').empty();
 		console.log("selected year: " + yearSelected);
 		console.log("selected month: " + monthSelected);
 		

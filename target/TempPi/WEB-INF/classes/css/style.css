@@ -1,11 +1,15 @@
+/*
+    DEMO STYLE
+*/
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Calibri', sans-serif;
     background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Calibri', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -49,13 +53,16 @@ a:focus {
 .wrapper {
     display: flex;
     width: 100%;
-    align-items: stretch;
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background: #7386D5;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #004181;
     color: #fff;
     transition: all 0.3s;
 }
@@ -66,12 +73,12 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #004191;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #004181;
 }
 
 #sidebar ul p {
@@ -93,7 +100,7 @@ a:focus {
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #004191;
 }
 
 a[data-toggle="collapse"] {
@@ -111,7 +118,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #EF7B00;
 }
 
 ul.CTAs {
@@ -142,10 +149,17 @@ a.article:hover {
 ----------------------------------------------------- */
 
 #content {
-    width: 100%;
-    padding: 20px;
+    width: calc(100% - 250px);
+    padding: 40px;
     min-height: 100vh;
     transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#content.active {
+    width: 100%;
 }
 
 /* ---------------------------------------------------
@@ -159,18 +173,13 @@ a.article:hover {
     #sidebar.active {
         margin-left: 0;
     }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
     #sidebarCollapse span {
         display: none;
     }
-}
-
-/* ---------------------------------------------------
-    Validation Error Styling
------------------------------------------------------ */
-.error {
-	color: red;
-}
-
-.td_loading {
-	display:none;
 }
