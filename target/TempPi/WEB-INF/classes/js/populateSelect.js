@@ -8,10 +8,12 @@ $(document).ready(function() {
     });
     
 	document.getElementById("search_year").onchange = function() {
+		$('#search_month').empty();
 		populateMonth();
 	}
 	
 	document.getElementById("search_month").onchange = function() {
+		$('#search_date').empty();
 		populateDate();
 	}
 });
@@ -30,9 +32,12 @@ function populateMonth() {
 	        type: "GET",
 	        success: function(data) 
 	        {
-	        	var search_month = $('#search_month'), option = "";
+	        	var search_month = $('#search_month'), 
+	        	option = "<option value='NONE' label='Select'/>";
+	        	
 	        	for(var i=0; i < data.length; i++) {
 	        		console.log(data[i]);
+	        		
 	        		option = option + "<option value='" + data[i] + "'>" + data[i] + "</option>";
 	        	}
 	        	search_month.append(option);
@@ -65,7 +70,8 @@ function populateDate() {
 	        type: "GET",
 	        success: function(data) 
 	        {
-	        	var search_month = $('#search_date'), option = "";
+	        	var search_month = $('#search_date'), 
+	        	option = "<option value='NONE' label='Select'/>";
 	        	for(var i=0; i < data.length; i++) {
 	        		console.log(data[i]);
 	        		option = option + "<option value='" + data[i] + "'>" + data[i] + "</option>";
