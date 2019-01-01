@@ -72,45 +72,6 @@
             </div>
         </nav>
         <h3>Temperature Record List</h3>
-	    <form:form name="search" action="searchResult" modelAttribute="searchForm" method="POST">
-		   <table>
-		   	<tr><td colspan="7">Search by date</td></tr>
-		   	<tr>
-		   		<td>Year:</td>
-		   		<td>
-		   			<form:select class="form-control form-control-sm" 
-		   			id="search_year" path="search_year">
-		   				<form:option value="NONE" label="Select" selected="true"/>
-		   				<form:options items="${yearList}"/>
-		   			</form:select>
-		   		</td>
-		   		<td>Month:</td>
-		   		<td>
-		   			<form:select class="form-control form-control-sm" path="search_month"
-		   			id="search_month">
-		   				<form:option value="NONE" label="Select"/>
-		   			</form:select>
-		   		</td>
-		   		<td> Day:</td>
-		   		<td>
-		   			<form:select class="form-control form-control-sm" path="search_date"
-		   			id="search_date">
-		   				<form:option value="NONE" label="Select"/>
-		   			</form:select>
-		   		</td>
-		   		<td><input type="submit" value="Search" class="btn btn-primary btn-sm"></td>
-		   	</tr>
-		   	<tr>
-		   		<td colspan="7"><form:errors path="search_year" class="error"/></td>
-		   	</tr>
-		   	<tr>		   		
-		   		<td colspan="7"><form:errors path="search_month" class="error"/></td>
-		   	</tr>
-		   	<tr>
-		   		<td colspan="7"><form:errors path="search_date" class="error"/></td>
-		   	</tr>
-		   </table>
-	   </form:form>
 	   <br>
 	   <p>Temperature record graph for: <c:out value="${year}"/>/<c:out value="${month}"/>
 	   /<c:out value="${date}"/></p>

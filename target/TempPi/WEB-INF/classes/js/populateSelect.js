@@ -1,4 +1,12 @@
 $(document).ready(function() {
+	$(".td_loading").hide();
+	
+    $(document).ajaxStart(function () {
+        $(".td_loading").show();
+    }).ajaxStop(function () {
+        $(".td_loading").hide();
+    });
+    
 	document.getElementById("search_year").onchange = function() {
 		populateMonth();
 	}

@@ -19,6 +19,7 @@
     crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/image.css">
 	
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -99,6 +100,7 @@
 		   			</form:select>
 		   		</td>
 		   		<td><input type="submit" value="Search" class="btn btn-primary btn-sm"></td>
+		   		<td class="td_loading">loading..<img id="loading_search" src="img/loading.gif"/></td>
 		   	</tr>
 		   	<tr>
 		   		<td colspan="7"><form:errors path="search_year" class="error"/></td>

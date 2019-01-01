@@ -170,3 +170,7 @@ a.article:hover {
 .error {
 	color: red;
 }
+
+.td_loading {
+	display:none;
+}
