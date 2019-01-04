@@ -53,7 +53,13 @@
 	    <property name="dataSource" ref="dataSource" />
 	    <property name="configLocation" value="classpath:hibernate.cfg.xml" />
 	</bean>
+	
 	<bean id="tempRecordDAO" class="com.temppi.spring.model.dao.TempRecordDAOImpl">
+	    <constructor-arg>
+	        <ref bean="sessionFactory" />
+	    </constructor-arg>
+	</bean>
+		<bean id="menuDAO" class="com.temppi.spring.model.dao.MenuDAOImpl">
 	    <constructor-arg>
 	        <ref bean="sessionFactory" />
 	    </constructor-arg>

@@ -43,18 +43,26 @@
 
         <ul class="list-unstyled components">
             <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+                <a href="#1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="1">
                     <li>
                         <a href="${contextPath}/">Home</a>
                     </li>
                 </ul>
             </li>
             <li class="active">
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Search</a>
-                <ul class="list-unstyled collapse show" id="pageSubmenu">
+                <a href="#2" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Search</a>
+                <ul class="list-unstyled collapse show" id="2">
                     <li>
                         <a href="${contextPath}/search">Temperature Search</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">App Settings</a>
+                <ul class="collapse list-unstyled" id="3">
+                    <li>
+                        <a href="${contextPath}/menu_form">Menu Form</a>
                     </li>
                 </ul>
             </li>

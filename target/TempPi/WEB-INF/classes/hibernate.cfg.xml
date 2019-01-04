@@ -8,5 +8,6 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property> 
     <mapping resource="hibernate/TempRecordDTO.hbm.xml"/>
+    <mapping resource="hibernate/MenuDTO.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

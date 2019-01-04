@@ -183,3 +183,15 @@ a.article:hover {
         display: none;
     }
 }
+
+/* ---------------------------------------------------
+    Customised Styling Author: Ko Gi Hun
+----------------------------------------------------- */
+
+.error {
+	color: red;
+}
+
+.form_hide {
+	display: none;
+}

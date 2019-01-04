@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 Jan, 2019 11:54:40 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.temppi.spring.model.dto.MenuDTO" table="MENU">
+        <id name="menu_id" type="long">
+            <column name="MENU_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="menu_name" type="java.lang.String">
+            <column name="MENU_NAME" />
+        </property>
+    </class>
+</hibernate-mapping>

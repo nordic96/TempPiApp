@@ -1,7 +1,11 @@
+com\temppi\spring\model\dao\MenuDAOImpl.class
 com\temppi\spring\model\dto\TempRecordDTO.class
 com\temppi\spring\controller\HomeController.class
+com\temppi\spring\model\dao\TempRecordDAO.class
+com\temppi\spring\controller\SearchController.class
+com\temppi\spring\controller\MenuController.class
 com\temppi\spring\model\dao\TempRecordDAOImpl.class
 com\temppi\spring\model\SearchByDateForm.class
-com\temppi\spring\model\dao\TempRecordDAO.class
+com\temppi\spring\model\dao\MenuDAO.class
+com\temppi\spring\model\dto\MenuDTO.class
 com\temppi\spring\controller\JSONMapper.class
-com\temppi\spring\controller\SearchController.class
