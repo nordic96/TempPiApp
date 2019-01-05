@@ -6,12 +6,12 @@
 
   <groupId>com.temppi.spring</groupId>
   <artifactId>TempPi</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
   <packaging>war</packaging>
 
   <name>TempPi Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>http://localhost:9090/TempPi/</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -107,7 +107,7 @@
  	<dependency>
 	    <groupId>com.fasterxml.jackson.core</groupId>
 	    <artifactId>jackson-databind</artifactId>
-	    <version>2.9.5</version>
+	    <version>[2.9.8,)</version>
 	</dependency>
   </dependencies>
 

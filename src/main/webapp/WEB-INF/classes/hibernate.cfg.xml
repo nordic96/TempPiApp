@@ -9,5 +9,6 @@
     <property name="format_sql">true</property> 
     <mapping resource="hibernate/TempRecordDTO.hbm.xml"/>
     <mapping resource="hibernate/MenuDTO.hbm.xml"/>
+    <mapping resource="hibernate/SubMenuDTO.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -66,6 +66,9 @@
                     <li>
                         <a href="${contextPath}/menu_form">Menu Form</a>
                     </li>
+                     <li>
+                        <a href="${contextPath}/submenu">Sub Menu</a>
+                    </li>                   
                 </ul>
             </li>
         </ul>

@@ -1,5 +1,7 @@
 package com.temppi.spring.model.dto;
 
+import com.temppi.spring.controller.JSONMapper;
+
 public class MenuDTO {
 	private long menu_id;
 	private String menu_name;
@@ -15,5 +17,10 @@ public class MenuDTO {
 	}
 	public void setMenu_name(String menu_name) {
 		this.menu_name = menu_name;
+	}
+	
+	@Override
+	public String toString() {
+		return JSONMapper.mapJSONString(this);
 	}
 }

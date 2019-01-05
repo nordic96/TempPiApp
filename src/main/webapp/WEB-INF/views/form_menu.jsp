@@ -35,7 +35,7 @@
 	</form:form>
 </div>
 <br>
-<p>${successMsg}</p>
+<table><tr><td>Menu Insertion Result: ${successMsg}</td></tr></table>
 
 <script type="text/javascript">
 	function openMenuForm() {
