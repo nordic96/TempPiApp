@@ -7,7 +7,7 @@
 </table>
 <div style="width:80%">
 <table id="dtVerticalScroll"
-class="table table-striped table-bordered table-sm">
+class="display">
 	<tbody>
 		<thead>
 	 	<tr>

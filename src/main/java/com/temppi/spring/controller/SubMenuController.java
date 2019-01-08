@@ -18,6 +18,11 @@ import com.temppi.spring.model.dao.SubMenuDAO;
 import com.temppi.spring.model.dto.MenuDTO;
 import com.temppi.spring.model.dto.SubMenuDTO;
 
+/**
+ * Spring controller for SubMenu contents.
+ * @author Ko Gi Hun
+ *
+ */
 @Controller
 public class SubMenuController {
 	
@@ -31,6 +36,11 @@ public class SubMenuController {
 	@Autowired
 	private SubMenuDAO subMenuDAO;
 	
+	/**
+	 * 
+	 * @param subMenuForm form submitted from the client side.
+	 * @return model redirecting /submenu.
+	 */
 	@RequestMapping(value="/submenu/add", method = RequestMethod.POST)
 	public ModelAndView addSubMenu(@Valid @ModelAttribute SubMenuDTO subMenuForm) {
 		logger.debug("--------------------addSubMenu()--------------------");

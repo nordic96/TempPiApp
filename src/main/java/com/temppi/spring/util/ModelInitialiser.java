@@ -8,8 +8,9 @@ import com.temppi.spring.model.dao.SubMenuDAO;
 
 /**
  * 
+ * <p>Initialises default model and view by adding menu list and 
+ * submenu list objects with a template jsp view.</p>
  * @author Ko Gi Hun
- * Initialises default model and view by adding menu list and submenu list objects with a template jsp view.
  *
  */
 public class ModelInitialiser {

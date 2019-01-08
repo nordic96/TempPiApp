@@ -3,24 +3,21 @@
 <h3>Menu Form</h3>
 <div class="line"></div>
 <table style="width:80%">
-	<tr><td align="right"><img src="img/add_icon.png" class="img_add_icon" id="img_add_icon" onclick="openMenuForm()"/></td></tr>
+	<tr><td align="left"><img src="img/add_icon.png" class="img_add_icon" id="img_add_icon" onclick="openMenuForm()"/></td></tr>
 </table>
-<table class="table table-sm" style="width:80%">
-	<thead class="thead-light">
- 	<tr>
-  	<th>#</th>
-  	<th>Menu Name</th>
-  	<th>Edit/Delete</th>
- 	</tr>		   		
-	</thead>
-    <c:forEach var="menu" items="${menuList}" varStatus="status">
-    <tr>
-    	<td>${menu.menu_id}</td>
-        <td>${menu.menu_name}</td>
-        <td><img src="img/edit.png" class="img_edit"/></td>
-    </tr>
-    </c:forEach>             
+<div style="width:80%">
+<table id="dtVerticalScroll"
+class="display">
+	<tbody>
+		<thead>
+	 	<tr>
+	  	<th class="th-sm">Menu ID</th>
+	  	<th class="th-sm">Menu Name</th>
+	 	</tr>		   		
+		</thead>
+	</tbody>        
 </table>
+</div>
 <div class="line"></div>
 <div class="form_hide">
 	<form:form action="addMenu" modelAttribute="addMenuForm" method="POST">
@@ -36,8 +33,20 @@
 </div>
 <br>
 <table><tr><td>Menu Insertion Result: ${successMsg}</td></tr></table>
-
 <script type="text/javascript">
+	$(document).ready(function() {
+		var data = eval('${menuListJson}');
+		$('#dtVerticalScroll').DataTable({
+			"aaData" : data,	
+			"aoColumns" : [
+				{"mData": "menu_id"},	
+				{"mData": "menu_name"}
+			],
+			"scrollY": "250px",
+			"scrollCollapse": true,
+		});
+		$('.dataTables_length').addClass('bs-select');
+	});
 	function openMenuForm() {
 		$('.form_hide').show();
 	}

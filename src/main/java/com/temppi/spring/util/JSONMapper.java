@@ -10,6 +10,11 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 
+/**
+ * JSON Mapper using Jackson library to map & read objects.
+ * @author Ko Gi Hun
+ *
+ */
 public class JSONMapper {
 	private static final Logger logger = Logger.getLogger(JSONMapper.class);
 	

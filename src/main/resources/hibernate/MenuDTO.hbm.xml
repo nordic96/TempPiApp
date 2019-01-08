@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 1 Jan, 2019 11:54:40 PM by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 8 Jan, 2019 2:13:17 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.temppi.spring.model.dto.MenuDTO" table="MENU">
         <id name="menu_id" type="long">
             <column name="MENU_ID" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <property name="menu_name" type="java.lang.String">
             <column name="MENU_NAME" />
         </property>
-        <set name="submenus" table="SUBMENU" inverse="true" cascade="save-update"
-        lazy="true" fetch="select">
-        	<key>
-        		<column name="MENU_ID" not-null="true"/>
-        	</key>
-        	<one-to-many class="com.temppi.spring.model.dto.SubMenuDTO"/>
-        </set>
+        <list name="submenus" inverse="false" table="SUBMENU" lazy="true">
+            <key>
+                <column name="MENU_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.temppi.spring.model.dto.SubMenuDTO" />
+        </list>
     </class>
 </hibernate-mapping>
