@@ -1,10 +1,18 @@
 package com.temppi.spring.model.dto;
 
-import com.temppi.spring.controller.JSONMapper;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.temppi.spring.util.JSONMapper;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MenuDTO {
 	private long menu_id;
 	private String menu_name;
+	
+	@JsonBackReference
+	private Set<SubMenuDTO> submenus;
 	
 	public long getMenu_id() {
 		return menu_id;
@@ -17,6 +25,12 @@ public class MenuDTO {
 	}
 	public void setMenu_name(String menu_name) {
 		this.menu_name = menu_name;
+	}
+	public Set<SubMenuDTO> getSubmenus() {
+		return submenus;
+	}
+	public void setSubmenus(Set<SubMenuDTO> submenus) {
+		this.submenus = submenus;
 	}
 	
 	@Override

@@ -1,9 +1,13 @@
 package com.temppi.spring.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class SubMenuDTO {
 	private long sub_id;
 	private String sub_name;
 	private String context;
+	
+	@JsonManagedReference
 	private MenuDTO menu;
 	
 	public long getSub_id() {
