@@ -1,7 +1,5 @@
 package com.temppi.spring.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -15,11 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.temppi.spring.model.dao.MenuDAO;
 import com.temppi.spring.model.dto.MenuDTO;
+import com.temppi.spring.util.ModelInitialiser;
 
 @Controller
 public class MenuController {
 	@Autowired
 	private MenuDAO menuDAO;
+	
+	@Autowired
+	private ModelInitialiser modelInitialiser;
 	
 	private static final Logger logger = Logger.getLogger(MenuController.class);
 	
@@ -27,11 +29,7 @@ public class MenuController {
 	public ModelAndView addMenu(@Valid @ModelAttribute("addMenuForm") MenuDTO menu,
 			BindingResult result) {
 		logger.info("----addMenu()----");
-		
-		ModelAndView model = new ModelAndView("template");
-		model.addObject("content", "form_menu");
-		List<MenuDTO> menuList = menuDAO.getAllMenuList();
-		model.addObject("menuList", menuList);
+		ModelAndView model = modelInitialiser.modelInit("form_menu");
 		
 		if (result.hasErrors()) {
 			logger.error("validation error.");
@@ -39,6 +37,6 @@ public class MenuController {
 			boolean status = menuDAO.insertMenu(menu);
 			model.addObject("successMsg", status);
 		}
-		return model;
+		return new ModelAndView("redirect:/menu");
 	}
 }

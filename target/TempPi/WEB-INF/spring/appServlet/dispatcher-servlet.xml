@@ -18,7 +18,7 @@
      
     <context:component-scan base-package="com.temppi.spring" />
     <context:property-placeholder location="classpath:application.properties"/>
-    <mvc:annotation-driven conversion-service = "conversionService"/>
+    <mvc:annotation-driven/>
     
     <mvc:resources mapping="/js/**" location="/WEB-INF/classes/js/"/>
     <mvc:resources mapping="/css/**" location="/WEB-INF/classes/css/"/>
@@ -55,14 +55,9 @@
 	    <property name="dataSource" ref="dataSource" />
 	    <property name="configLocation" value="classpath:hibernate.cfg.xml" />
 	</bean>
-    <bean id="conversionService"
-            class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="converters">
-            <set>
-                <bean class="com.temppi.spring.converter.MenuConverter"/>
-            </set>
-        </property>
-    </bean>
+	
+	<bean id="modelInitialiser" class="com.temppi.spring.util.ModelInitialiser">
+	</bean>
 	
 	<bean id="tempRecordDAO" class="com.temppi.spring.model.dao.TempRecordDAOImpl">
 	    <constructor-arg>

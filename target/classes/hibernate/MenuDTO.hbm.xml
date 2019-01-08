@@ -11,5 +11,12 @@
         <property name="menu_name" type="java.lang.String">
             <column name="MENU_NAME" />
         </property>
+        <set name="submenus" table="SUBMENU" inverse="true" cascade="save-update"
+        lazy="true" fetch="select">
+        	<key>
+        		<column name="MENU_ID" not-null="true"/>
+        	</key>
+        	<one-to-many class="com.temppi.spring.model.dto.SubMenuDTO"/>
+        </set>
     </class>
 </hibernate-mapping>

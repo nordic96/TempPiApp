@@ -19,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.temppi.spring.model.SearchByDateForm;
 import com.temppi.spring.model.dao.TempRecordDAO;
 import com.temppi.spring.model.dto.TempRecordDTO;
+import com.temppi.spring.util.JSONMapper;
+import com.temppi.spring.util.ModelInitialiser;
 
 @Controller
 public class SearchController {
@@ -26,11 +28,14 @@ public class SearchController {
 	@Autowired
 	private TempRecordDAO tempRecordDAO;
 	
+	@Autowired
+	private ModelInitialiser modelInitialiser;
+	
 	private static final Logger logger = Logger.getLogger(SearchController.class);
 	
 	@RequestMapping(value="/search", method = RequestMethod.GET)
 	public ModelAndView search() {
-		ModelAndView model = new ModelAndView("search");
+		ModelAndView model = modelInitialiser.modelInit("search");
 		List<Integer> yearList = getYearList();
 		
 		model.addObject("yearList", yearList);
@@ -66,12 +71,11 @@ public class SearchController {
 		
 		if(bindingResult.hasErrors()) {
 			logger.debug("searchForm has error. returning back to /search");
-			ModelAndView model = new ModelAndView("search");
-			return model;
+			return new ModelAndView("redirect:/search");
 			
 		} else {
 			logger.debug("binding result does not have error.");
-			ModelAndView model = new ModelAndView("searchResult");
+			ModelAndView model = modelInitialiser.modelInit("searchResult");
 			
 			List<TempRecordDTO> searchResultList = 
 					tempRecordDAO.getSearchResultList(year, month, date);

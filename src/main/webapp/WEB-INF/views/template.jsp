@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/image.css">
     
+    <!-- JQuery DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" 
     integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" 
@@ -29,7 +32,28 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" 
     integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" 
     crossorigin="anonymous"></script>
-	
+    
+    <!-- jQuery CDN - (with AJAX) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"
+  	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  	crossorigin="anonymous"></script>
+  	
+  	<!-- JQuery DataTable -->
+  	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  	
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
+    crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
+    crossorigin="anonymous"></script>
+    
+    <!-- jQuery Custom Scroller CDN -->
+    <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
 </head>
 <body>
 <div class="wrapper">
@@ -40,34 +64,22 @@
             <tr><td><h3>TempPi</h3></td></tr>
             </table>
         </div>
-
         <ul class="list-unstyled components">
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="${contextPath}/">Home</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Search</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="${contextPath}/search">Temperature Search</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">App Settings</a>
-                <ul class="collapse list-unstyled" id="3">
-                    <li>
-                        <a href="${contextPath}/menu_form">Menu Form</a>
-                    </li>
-                </ul>
-            </li>
+			<c:forEach var="menu" items='${menuList}' varStatus="menuStatus">
+	            <li>
+	                <a href="#${menu.menu_id}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">${menu.menu_name}</a>
+	                <ul class="collapse list-unstyled" id="${menu.menu_id}">
+						<c:forEach var="sub" items='${subMenuList}' varStatus="subStatus">
+							<c:if test="${menu.menu_id eq sub.menu.menu_id}">
+			                    <li>
+			                        <a href="${contextPath}${sub.context}">${sub.sub_name}</a>
+			                    </li>								
+							</c:if>
+						</c:forEach>	                
+	                </ul>
+	            </li>
+			</c:forEach>
         </ul>
-
     </nav>
     <!-- Page Content -->
     <div id="content">
@@ -84,22 +96,6 @@
         <div><jsp:include page="${content}.jsp"/></div>
     </div>
 </div>
-    <!-- jQuery CDN - (with AJAX) -->
-	<script src="https://code.jquery.com/jquery-3.3.1.js"
-  	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  	crossorigin="anonymous"></script>
-  	
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
-    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
-    crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
-    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
-    crossorigin="anonymous"></script>
-    
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     
     <!-- sidebar JQuery -->
     <script type="text/javascript">
@@ -114,6 +110,10 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
+        
+		function openForm() {
+  			$('.form_hide').show();
+  		}
     </script>
 </body>
 </html>
