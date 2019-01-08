@@ -7,6 +7,12 @@ import org.apache.log4j.Logger;
 import com.temppi.spring.model.dto.MenuDTO;
 import com.temppi.spring.util.JSONMapper;
 
+/**
+ * 
+ * <p>Customised Property editor for converting String to MenuDTO object using JSON parsing.</p>
+ * @author Ko Gi Hun
+ *
+ */
 public class MenuEditor extends PropertyEditorSupport{
 	
 	private static final Logger logger = Logger.getLogger(MenuEditor.class);

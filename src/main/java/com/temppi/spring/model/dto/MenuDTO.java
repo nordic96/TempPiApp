@@ -1,6 +1,6 @@
 package com.temppi.spring.model.dto;
 
-import java.util.Set;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,7 +12,7 @@ public class MenuDTO {
 	private String menu_name;
 	
 	@JsonBackReference
-	private Set<SubMenuDTO> submenus;
+	private List<SubMenuDTO> submenus;
 	
 	public long getMenu_id() {
 		return menu_id;
@@ -26,10 +26,10 @@ public class MenuDTO {
 	public void setMenu_name(String menu_name) {
 		this.menu_name = menu_name;
 	}
-	public Set<SubMenuDTO> getSubmenus() {
+	public List<SubMenuDTO> getSubmenus() {
 		return submenus;
 	}
-	public void setSubmenus(Set<SubMenuDTO> submenus) {
+	public void setSubmenus(List<SubMenuDTO> submenus) {
 		this.submenus = submenus;
 	}
 	

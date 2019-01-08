@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.temppi.spring.editor.MenuEditor;
+import com.temppi.spring.model.dao.MenuDAO;
 import com.temppi.spring.model.dao.SubMenuDAO;
 import com.temppi.spring.model.dao.TempRecordDAO;
 import com.temppi.spring.model.dto.MenuDTO;
@@ -19,6 +20,12 @@ import com.temppi.spring.model.dto.SubMenuDTO;
 import com.temppi.spring.util.JSONMapper;
 import com.temppi.spring.util.ModelInitialiser;
 
+/**
+ * 
+ * <p>Default Spring controller for rendering all menus using request method GET.</p>
+ * @author Ko Gi Hun
+ *
+ */
 @Controller
 public class HomeController {
 	
@@ -37,6 +44,9 @@ public class HomeController {
 	@Autowired
 	private SubMenuDAO subMenuDAO;	
 	
+	@Autowired
+	private MenuDAO menuDAO;
+	
 	private static final Logger logger = Logger.getLogger(HomeController.class);
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
@@ -49,6 +59,7 @@ public class HomeController {
 	@RequestMapping(value="/menu", method = RequestMethod.GET)
 	public ModelAndView menu_form() {
 		ModelAndView model = modelInitialiser.modelInit("form_menu");
+		model.addObject("menuListJson", JSONMapper.mapJSONString(menuDAO.getAllMenuList()));
 		model.addObject("addMenuForm", new MenuDTO());
 		return model;
 	}
